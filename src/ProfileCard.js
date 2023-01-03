@@ -1,9 +1,18 @@
-function ProfileCard({ title, handle, image }) {
+function ProfileCard({ title, handle, image, description }) {
   return (
-    <div>
-      <div>Title is {title}</div>
-      <img src={image} alt={`img - ${title}`}></img>
-      <div>Handle is {handle}</div>
+    <div className="card">
+      <div className="card-image">
+        <figure className="iamge is-1by1">
+          <img src={image} alt={`img - ${title}`}></img>
+        </figure>
+      </div>
+      <div className="card-content">
+        <div className="media-content">
+          <p className="title is-4">{title}</p>
+          <p className="subtitle is-6">{handle}</p>
+          <div className="content">{description}</div>
+        </div>
+      </div>
     </div>
   );
 }
