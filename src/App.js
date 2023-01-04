@@ -4,9 +4,32 @@ import AlexaImage from "./Images/alexa.png";
 import CortanaImage from "./Images/cortana.png";
 import SiriImage from "./Images/siri.png";
 import Animal from "./Animals";
+import { useState } from "react";
+import "./App.css";
+
+function getRandomAnimals() {
+  const animals = ["bird", "cat", "cow", "dog", "gator", "horse"];
+
+  return animals[Math.floor(Math.random() * animals.length)];
+}
 
 function App() {
-  return <Animal></Animal>;
+  const [animal, setAnimal] = useState([]);
+
+  const handleClick = () => {
+    setAnimal([...animal, getRandomAnimals()]);
+  };
+
+  const renderedAnimal = animal.map((item, index) => (
+    <Animal type={item} key={index}></Animal>
+  ));
+
+  return (
+    <div className="app">
+      <button onClick={handleClick}>Add Animal</button>
+      <div className="animal-list">{renderedAnimal}</div>
+    </div>
+  );
 }
 
 /* 
